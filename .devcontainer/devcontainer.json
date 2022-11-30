@@ -1,39 +1,40 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Python 3",
-	"image": "mcr.microsoft.com/devcontainers/python:3.10",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r requirements.txt",
-	// Configure tool-specific properties.
-	"customizations": {
-		"vscode": {
-			"settings": {
-				"editor.formatOnSave": true,
-				"python.linting.flake8Enabled": true,
-				"python.formatting.provider": "black",
-				"autoDocstring.docstringFormat": "numpy",
-				"python.linting.flake8Args": [
-					"--max-line-length",
-					"120"
-				],
-				"editor.codeActionsOnSave": {
-					"source.organizeImports": true
-				}
-			},
-			"extensions": [
-				"editorconfig.editorconfig",
-				"eamodio.gitlens",
-				"mhutchie.git-graph",
-				"njpwerner.autodocstring",
-				"gruntfuggly.todo-tree"
-			]
-		}
-	},
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+    "name": "Python 3",
+    "image": "mcr.microsoft.com/devcontainers/python:3.10",
+    // Features to add to the dev container. More info: https://containers.dev/features.
+    // "features": {},
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+    // Use 'postCreateCommand' to run commands after the container is created.
+    "initializeCommand": "cd \"${localWorkspaceFolder}\" && git config --local user.email \"$(git config user.email)\" && git config --local user.name \"$(git config user.name)\"",
+    "postCreateCommand": "pip3 install --user -r requirements.txt",
+    // Configure tool-specific properties.
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "editor.formatOnSave": true,
+                "python.linting.flake8Enabled": true,
+                "python.formatting.provider": "black",
+                "autoDocstring.docstringFormat": "numpy",
+                "python.linting.flake8Args": [
+                    "--max-line-length",
+                    "120"
+                ],
+                "editor.codeActionsOnSave": {
+                    "source.organizeImports": true
+                }
+            },
+            "extensions": [
+                "editorconfig.editorconfig",
+                "eamodio.gitlens",
+                "mhutchie.git-graph",
+                "njpwerner.autodocstring",
+                "gruntfuggly.todo-tree"
+            ]
+        }
+    },
+    // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+    // "remoteUser": "root"
 }
